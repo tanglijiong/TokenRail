@@ -1,0 +1,33 @@
+name: Besu integration
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "contracts/**"
+      - "deploy/**"
+      - "scripts/*.sh"
+      - ".github/workflows/besu.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qbft:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: contracts/package-lock.json
+      - name: Install pinned Foundry tools
+        working-directory: contracts
+        run: npm ci
+      - name: Verify four-validator QBFT and contract deployment
+        run: scripts/test-m3-besu.sh
+      - name: Stop integration network
+        if: always()
+        run: scripts/besu-network.sh down

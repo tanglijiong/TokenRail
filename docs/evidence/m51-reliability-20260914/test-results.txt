@@ -1,0 +1,19 @@
+TokenRail M5.1 local verification, 2026-09-14
+Isolated runtime: deploy/.runtime/m51/run.eTM0nr
+
+Besu baseline (8 run; 8 isolated-only cases skipped here)
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 39.96 s -- in io.tokenrail.M5ProjectionIT
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 26.44 s -- in io.tokenrail.M4WorkflowIT
+[WARNING] Tests run: 8, Failures: 0, Errors: 0, Skipped: 8, Time elapsed: 0 s -- in io.tokenrail.M51ReliabilityIT
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 8
+[INFO] BUILD SUCCESS
+[INFO] Finished at: 2026-09-14T16:52:06+06:00
+
+Isolated reliability (all 8 run)
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 41.03 s -- in io.tokenrail.M51ReliabilityIT
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Finished at: 2026-09-14T16:56:52+06:00
+
+Contract regression
+Ran 6 test suites in 295.59ms (366.78ms CPU time): 45 tests passed, 0 failed, 0 skipped (45 total tests)

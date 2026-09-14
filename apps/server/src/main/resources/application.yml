@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: tokenrail-server
+  datasource:
+    url: ${TOKENRAIL_DATABASE_URL:jdbc:postgresql://127.0.0.1:5432/tokenrail}
+    username: ${TOKENRAIL_DATABASE_USER:tokenrail}
+    password: ${TOKENRAIL_DATABASE_PASSWORD:tokenrail-local-only}
+  flyway:
+    validate-migration-naming: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+tokenrail:
+  chain-id: ${TOKENRAIL_CHAIN_ID:20260913}
+  rpc-url: ${TOKENRAIL_RPC_URL:http://127.0.0.1:8545}
+  deployment-id: ${TOKENRAIL_DEPLOYMENT_ID:}
+  genesis-hash: ${TOKENRAIL_GENESIS_HASH:}
+  deposit-token-address: ${TOKENRAIL_DEPOSIT_TOKEN_ADDRESS:}
+  identity-registry-address: ${TOKENRAIL_IDENTITY_REGISTRY_ADDRESS:}
+  bond-token-address: ${TOKENRAIL_BOND_TOKEN_ADDRESS:}
+  escrow-address: ${TOKENRAIL_ESCROW_ADDRESS:}
+  dvp-address: ${TOKENRAIL_DVP_ADDRESS:}
+  issuer-private-key-file: ${TOKENRAIL_ISSUER_KEY_FILE:../../deploy/.runtime/besu/deployer.key}
+  worker-enabled: ${TOKENRAIL_WORKER_ENABLED:true}
+  indexer-enabled: ${TOKENRAIL_INDEXER_ENABLED:true}
+  deployment-block: ${TOKENRAIL_DEPLOYMENT_BLOCK:0}
+  indexer-batch-size: ${TOKENRAIL_INDEXER_BATCH_SIZE:25}
+  demo-tokens:
+    investor-b-token: INVESTOR_B
+    investor-a-token: INVESTOR_A
+    operator-token: OPERATOR

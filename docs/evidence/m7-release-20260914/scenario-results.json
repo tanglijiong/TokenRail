@@ -1,0 +1,368 @@
+{
+  "generatedAt": "2026-09-14T17:23:00Z",
+  "baseUrl": "http://127.0.0.1:18081",
+  "scenarioA": {
+    "releaseId": "0x86094e54e0eb30a92af9944e6854de653280c5550d74ab4e354b2914e5b80825",
+    "refundId": "0x38472227ff4b296d2c2a31d179fc12a836462a09829a7a5f439deca49a658c21",
+    "release": {
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0x86094e54e0eb30a92af9944e6854de653280c5550d74ab4e354b2914e5b80825",
+      "resourceKind": "PAYMENT",
+      "terms": {
+        "payee": "0x720e5de196d3635fe703347a5f86cebf438f672d",
+        "payer": "0xe19bdb49c8270b9d522afec02371f7e7b20c511c",
+        "amount": 1000,
+        "payerId": "INVESTOR_B",
+        "attestor": "0x732530b6f43035f8c2c43edd8433c733f56de2d9",
+        "deadline": 1789406827
+      },
+      "chain": {
+        "payer": "0xe19bdb49c8270b9d522afec02371f7e7b20c511c",
+        "payee": "0x720e5de196d3635fe703347a5f86cebf438f672d",
+        "attestor": "0x732530b6f43035f8c2c43edd8433c733f56de2d9",
+        "amount": "1000",
+        "deadline": 1789406827,
+        "state": 2
+      },
+      "latestOperationId": "d0d98b46-8cbc-44a6-b300-9042053140dd",
+      "operationStatus": "SUCCEEDED",
+      "transactionHash": "0x27cd32eda830a6c7012031e0e181dacf9a9144adeb4e4d4a9c58125812a39c62",
+      "minedBlock": 23443,
+      "minedHash": "0x6fb4e62926f0e7d65483bc750da49701af92181a8ad39ee58f193b61ed302c65",
+      "syncStatus": "PROJECTED",
+      "indexedBlock": 23443,
+      "indexedHash": "0x6fb4e62926f0e7d65483bc750da49701af92181a8ad39ee58f193b61ed302c65"
+    },
+    "refund": {
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0x38472227ff4b296d2c2a31d179fc12a836462a09829a7a5f439deca49a658c21",
+      "resourceKind": "PAYMENT",
+      "terms": {
+        "payee": "0x720e5de196d3635fe703347a5f86cebf438f672d",
+        "payer": "0xe19bdb49c8270b9d522afec02371f7e7b20c511c",
+        "amount": 500,
+        "payerId": "INVESTOR_B",
+        "attestor": "0x732530b6f43035f8c2c43edd8433c733f56de2d9",
+        "deadline": 1789406537
+      },
+      "chain": {
+        "payer": "0xe19bdb49c8270b9d522afec02371f7e7b20c511c",
+        "payee": "0x720e5de196d3635fe703347a5f86cebf438f672d",
+        "attestor": "0x732530b6f43035f8c2c43edd8433c733f56de2d9",
+        "amount": "500",
+        "deadline": 1789406537,
+        "state": 3
+      },
+      "latestOperationId": "4e9c56f7-da0d-4e30-a7a9-ab6f38bc8686",
+      "operationStatus": "SUCCEEDED",
+      "transactionHash": "0xcd3b0df8745f13cf2b82902a303bb9aa7191794b755955022a92dbdab3347baa",
+      "minedBlock": 23451,
+      "minedHash": "0x6d6050383009afb15cd979003a711bef60c893ea8c9acb7bee643739adbfef1b",
+      "syncStatus": "PROJECTED",
+      "indexedBlock": 23451,
+      "indexedHash": "0x6d6050383009afb15cd979003a711bef60c893ea8c9acb7bee643739adbfef1b"
+    }
+  },
+  "scenarioB": {
+    "successId": "0xd76c0334861a9d0883c21bf9bfa909cba564a3bdb4bce3805ee6debb09d67d4e",
+    "insufficientId": "0xebc1bc34673192c73233739af21af98ff50ece2f012c747750790ca36c6934d7",
+    "success": {
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0xd76c0334861a9d0883c21bf9bfa909cba564a3bdb4bce3805ee6debb09d67d4e",
+      "resourceKind": "SETTLEMENT",
+      "terms": {
+        "buyer": "0xe19bdb49c8270b9d522afec02371f7e7b20c511c",
+        "expiry": 1789407151,
+        "seller": "0x720e5de196d3635fe703347a5f86cebf438f672d",
+        "sellerId": "INVESTOR_A",
+        "cashAmount": 10000,
+        "bondQuantity": 10,
+        "externalTradeRef": "M7-DVP-SUCCESS"
+      },
+      "chain": {
+        "seller": "0x720e5de196d3635fe703347a5f86cebf438f672d",
+        "buyer": "0xe19bdb49c8270b9d522afec02371f7e7b20c511c",
+        "bondQuantity": "10",
+        "cashAmount": "10000",
+        "expiry": 1789407151,
+        "state": 3
+      },
+      "latestOperationId": "4b7fd5fe-339a-4d3e-8806-6731462ae606",
+      "operationStatus": "SUCCEEDED",
+      "transactionHash": "0x7e551eed1875e3165964ec87214c3b8428ae4e4b91f7ed742a40a5230214163f",
+      "minedBlock": 23457,
+      "minedHash": "0x7d059d3feae87b9f6025075e3b342a287d940e13e35b8cdd9065768ddf4cf32b",
+      "syncStatus": "PROJECTED",
+      "indexedBlock": 23457,
+      "indexedHash": "0x7d059d3feae87b9f6025075e3b342a287d940e13e35b8cdd9065768ddf4cf32b"
+    },
+    "beforeInsufficient": {
+      "aBond": "20",
+      "bBond": "10",
+      "aCash": "11000",
+      "bCash": "89000"
+    },
+    "afterInsufficient": {
+      "aBond": "20",
+      "bBond": "10",
+      "aCash": "11000",
+      "bCash": "89000"
+    }
+  },
+  "scenarioC": {
+    "settlementId": "0xc476a6bd3023cad823105f3540c7d199f8a88e4f455938b966523dbf5141f007",
+    "directTransferStatus": "0x0",
+    "settlement": {
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0xc476a6bd3023cad823105f3540c7d199f8a88e4f455938b966523dbf5141f007",
+      "resourceKind": "SETTLEMENT",
+      "terms": {
+        "buyer": "0xe19bdb49c8270b9d522afec02371f7e7b20c511c",
+        "expiry": 1789407167,
+        "seller": "0x720e5de196d3635fe703347a5f86cebf438f672d",
+        "sellerId": "INVESTOR_A",
+        "cashAmount": 5000,
+        "bondQuantity": 5,
+        "externalTradeRef": "M7-COMPLIANCE"
+      },
+      "chain": {
+        "seller": "0x720e5de196d3635fe703347a5f86cebf438f672d",
+        "buyer": "0xe19bdb49c8270b9d522afec02371f7e7b20c511c",
+        "bondQuantity": "5",
+        "cashAmount": "5000",
+        "expiry": 1789407167,
+        "state": 3
+      },
+      "latestOperationId": "2c1534ca-801b-4c36-a2ed-9676d741d257",
+      "operationStatus": "SUCCEEDED",
+      "transactionHash": "0x51a48b325f581a78351f7b52b744ff5b40f30c0833e9bc557a1491646767c7e1",
+      "minedBlock": 23468,
+      "minedHash": "0xce241b4413872d9b9f4286e02e99d88e4d7cb5f68a30a2eb9a7d076de8788152",
+      "syncStatus": "PROJECTED",
+      "indexedBlock": 23468,
+      "indexedHash": "0xce241b4413872d9b9f4286e02e99d88e4d7cb5f68a30a2eb9a7d076de8788152"
+    }
+  },
+  "operations": [
+    {
+      "operationId": "4ba419a7-c4a6-4ff1-a1ca-83f01b8a6d1b",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0xa85672c0fb82ef7ad5f06a73efae4a679235d5bbfdb5bd7988ade362feafaf84",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0x1631c557e7c5c2131cf9591ed481e7122000c609ca3a8e6b78d018200173d849",
+      "label": "issue-bond"
+    },
+    {
+      "operationId": "c84c0f0f-1560-457a-a715-5ee1a2cadfaa",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0x3bb83ed475ae6b039e2088a25190ddbb64b75e7ab5c709aff49678dc6528cc72",
+      "kind": "CONVERSION",
+      "amount": "100000",
+      "status": "COMPLETED",
+      "transactionHash": "0x3157e281875f10955022a1f7c1aae03ac4afd05ae7b66cd93f69499fbcdaea05",
+      "label": "convert-cash"
+    },
+    {
+      "operationId": "93fcbcd8-3463-4070-80e1-84c1b626d343",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0xd88321920756f88fcd5183a1425a063ed2d0ae07904155475da372007b2abe5c",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0x93ce069db3f64190ab33343dbd17f9184453e9e0924919a7a57f15ddb7f57edf",
+      "label": "escrow-allowance"
+    },
+    {
+      "operationId": "c4c85a97-6ab0-4367-a7db-65836cc09b02",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0x86094e54e0eb30a92af9944e6854de653280c5550d74ab4e354b2914e5b80825",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0xd1d8ab99ef91c63d563118516a58a5944aa125e0ef2fe2f10a9982cba7655ef1",
+      "label": "payment-fund-release"
+    },
+    {
+      "operationId": "d0d98b46-8cbc-44a6-b300-9042053140dd",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0x86094e54e0eb30a92af9944e6854de653280c5550d74ab4e354b2914e5b80825",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0x27cd32eda830a6c7012031e0e181dacf9a9144adeb4e4d4a9c58125812a39c62",
+      "label": "payment-release"
+    },
+    {
+      "operationId": "f4f567af-5ab8-40a4-b3b3-f3c0fa695773",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0x38472227ff4b296d2c2a31d179fc12a836462a09829a7a5f439deca49a658c21",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0x2309e071f8669e286be8a757cbee1e78d39dc08914d1bb363153f47d2a3aeeb0",
+      "label": "payment-fund-refund"
+    },
+    {
+      "operationId": "d4f0db45-0c5f-4f89-91d4-893d2a7ce7f9",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0x38472227ff4b296d2c2a31d179fc12a836462a09829a7a5f439deca49a658c21",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "REVERTED",
+      "transactionHash": "0x5acaa1f85ffa097248e2d9e6eda0c22be388508b34f80a3c17c219bb5d07dd18",
+      "label": "payment-early-refund"
+    },
+    {
+      "operationId": "4e9c56f7-da0d-4e30-a7a9-ab6f38bc8686",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0x38472227ff4b296d2c2a31d179fc12a836462a09829a7a5f439deca49a658c21",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0xcd3b0df8745f13cf2b82902a303bb9aa7191794b755955022a92dbdab3347baa",
+      "label": "payment-refund"
+    },
+    {
+      "operationId": "ea466af7-8e57-4eb5-a2cf-d31e3c60bde5",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0x3c3bf2068241f4a4bd91ee2b51350ef42c22549013b6032ab1646d4d8ee4b306",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0xf6f6c094cbfe18244bd9f29afdccbea1e2a1f055856eac434d8d092fab79d970",
+      "label": "dvp-bond-allowance"
+    },
+    {
+      "operationId": "9a77352c-6868-4b37-86a7-617ca8c92665",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0x696279843a729aa43664fdff3abe993d9f11fb05cf401b21d714b8cc9d3a950b",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0x7de84404c50a09d1e1f2640da8b2ccd652ca49eb0fdf913e2337f34ea0e5a147",
+      "label": "dvp-cash-allowance"
+    },
+    {
+      "operationId": "746bbc3d-3cd6-461b-9add-0cf8f80cd6e0",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0xd76c0334861a9d0883c21bf9bfa909cba564a3bdb4bce3805ee6debb09d67d4e",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0x965aa229afb7dbe0fcbc8feab0769297f74f624fbe8453c76e98bc80d5193cb3",
+      "label": "settlement-create"
+    },
+    {
+      "operationId": "7c006059-36dd-4ef8-a39c-ee4361d177c4",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0xd76c0334861a9d0883c21bf9bfa909cba564a3bdb4bce3805ee6debb09d67d4e",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0xfd99db0def2ad6b23907266582282dd5defaee87fa0b92b78bcd87ecc87dde3e",
+      "label": "settlement-confirm"
+    },
+    {
+      "operationId": "4b7fd5fe-339a-4d3e-8806-6731462ae606",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0xd76c0334861a9d0883c21bf9bfa909cba564a3bdb4bce3805ee6debb09d67d4e",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0x7e551eed1875e3165964ec87214c3b8428ae4e4b91f7ed742a40a5230214163f",
+      "label": "settlement-execute"
+    },
+    {
+      "operationId": "fa31c82f-739c-4375-ad5f-2c3a85538abf",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0xebc1bc34673192c73233739af21af98ff50ece2f012c747750790ca36c6934d7",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0x4e6ffa8e115931453bb4cff63c42d5021d306d63d0fc8dc63ddf56d2b09035a6",
+      "label": "insufficient-create"
+    },
+    {
+      "operationId": "96691c15-4065-48f1-b832-db2fd386420e",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0xebc1bc34673192c73233739af21af98ff50ece2f012c747750790ca36c6934d7",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0x26ea4b82882f10f7679d4e5eb3fdc19f5b8ddbab30eec19c260d33a0b683a527",
+      "label": "insufficient-confirm"
+    },
+    {
+      "operationId": "1127347d-1d59-4719-bdff-4b10f474fe5d",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0xebc1bc34673192c73233739af21af98ff50ece2f012c747750790ca36c6934d7",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "REVERTED",
+      "transactionHash": "0xb7b52666c0b171315b19b38ac897b094021eee0747d6f207135dd056a18cff62",
+      "label": "insufficient-execute"
+    },
+    {
+      "operationId": "3b73617b-9d7c-4258-9d5a-4fb67759133d",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0xc476a6bd3023cad823105f3540c7d199f8a88e4f455938b966523dbf5141f007",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0x9006e275f4c8e10578aea18679bd780281fb3dc2bf247ec50d85c070ddad6dd8",
+      "label": "compliance-create"
+    },
+    {
+      "operationId": "2a8fd1ff-32bb-47c9-9233-bd493d52b6ba",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0xc476a6bd3023cad823105f3540c7d199f8a88e4f455938b966523dbf5141f007",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0x85cbbf23e555d10ad30e2c580926fe2c9c86a51eda08c32ecd27f4dd468ec782",
+      "label": "compliance-confirm"
+    },
+    {
+      "operationId": "82f81868-0f79-471b-ab10-4f37e0f2ecd3",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0xf4b0fe63923bdd98b9c216d1ab3b52b9c25d3d92efac9486fb812f9bcb3d3e67",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0xb4f7f6453f848669fc999a1c98ad6aa51f8fd4529b29ad6c2fc1f6f2c4b1bbce",
+      "label": "compliance-freeze"
+    },
+    {
+      "operationId": "639d9dd3-4ccb-4b88-a4f4-cfad6ee1bdf5",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0xc476a6bd3023cad823105f3540c7d199f8a88e4f455938b966523dbf5141f007",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "REVERTED",
+      "transactionHash": "0x32de45392dd1456940cb50265d1eebf3e74cfad81d7a250c48d4f04552f55ce0",
+      "label": "compliance-frozen-execute"
+    },
+    {
+      "operationId": "01aea85d-d01f-4e56-9273-761786a2ab6e",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0xf4b0fe63923bdd98b9c216d1ab3b52b9c25d3d92efac9486fb812f9bcb3d3e67",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0x3b3b8713a5c747866f7bddabee4d32fde9b355e2cbf91938294775230cfc4560",
+      "label": "compliance-unfreeze"
+    },
+    {
+      "operationId": "2c1534ca-801b-4c36-a2ed-9676d741d257",
+      "deploymentId": "0x925d7ae1b59b9e10b06c68308ec01f45b8dc1113a929ea7bc7aed8e6a6d8fc48",
+      "resourceId": "0xc476a6bd3023cad823105f3540c7d199f8a88e4f455938b966523dbf5141f007",
+      "kind": "BUSINESS",
+      "amount": "1",
+      "status": "SUCCEEDED",
+      "transactionHash": "0x51a48b325f581a78351f7b52b744ff5b40f30c0833e9bc557a1491646767c7e1",
+      "label": "compliance-retry"
+    }
+  ]
+}

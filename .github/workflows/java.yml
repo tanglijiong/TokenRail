@@ -1,0 +1,63 @@
+name: Java projection and Besu integration
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "apps/server/**"
+      - "contracts/**"
+      - "deploy/**"
+      - "scripts/*.sh"
+      - ".github/workflows/java.yml"
+  pull_request:
+    paths:
+      - "apps/server/**"
+      - "contracts/**"
+      - "deploy/**"
+      - "scripts/*.sh"
+      - ".github/workflows/java.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  m51:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+          cache-dependency-path: apps/server/pom.xml
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: contracts/package-lock.json
+      - name: Install pinned Foundry tools
+        working-directory: contracts
+        run: npm ci
+      - name: Verify M4-M5 workflows on PostgreSQL and Besu
+        run: scripts/test-m5-projection.sh
+      - name: Verify real process crashes and isolated chain reset
+        run: scripts/test-m51-reliability.sh
+      - name: Verify M6 business APIs and escrow scenarios
+        run: scripts/test-m6-fullstack.sh
+      - name: Upload reliability evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m51-reliability
+          path: |
+            apps/server/target/failsafe-reports/*.xml
+            apps/server/target/failsafe-reports/*.txt
+            deploy/.runtime/m51/run.*/verify.log
+            deploy/.runtime/m51/run.*/*.evidence
+            deploy/.runtime/m6/verify.log
+          if-no-files-found: warn
+      - name: Stop integration environment
+        if: always()
+        run: scripts/besu-network.sh down

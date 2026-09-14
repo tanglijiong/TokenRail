@@ -1,0 +1,164 @@
+name: tokenrail-m3
+
+x-besu-common: &besu-common
+  image: hyperledger/besu:26.8.1@sha256:6f3f21ce533383fcc8db3bce02252b59d5a9e776b72b5a1c8ecd2db011600042
+  restart: unless-stopped
+  environment:
+    BESU_OPTS: -Xms128m -Xmx512m
+  networks:
+    tokenrail:
+
+services:
+  postgres:
+    image: postgres:18.6-alpine3.23@sha256:697c180dbf244d3ce4a8f4cbc0156cde840af055c1bf8b76aebe422a4822086f
+    profiles: [app]
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: tokenrail
+      POSTGRES_USER: tokenrail
+      POSTGRES_PASSWORD: tokenrail-local-only
+    ports:
+      - 127.0.0.1:5432:5432
+    volumes:
+      - tokenrail-postgres:/var/lib/postgresql
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U tokenrail -d tokenrail]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+    networks:
+      tokenrail:
+
+  node1:
+    <<: *besu-common
+    command:
+      - --data-path=/data
+      - --genesis-file=/config/genesis.json
+      - --node-private-key-file=/keys/key.priv
+      - --network-id=20260913
+      - --p2p-host=10.42.0.11
+      - --p2p-port=30303
+      - --discovery-enabled=false
+      - --static-nodes-file=/config/static-nodes.json
+      - --permissions-nodes-config-file=/data/permissions_config.toml
+      - --permissions-nodes-config-file-enabled=true
+      - --permissions-accounts-config-file=/data/permissions_config.toml
+      - --permissions-accounts-config-file-enabled=true
+      - --rpc-http-enabled=true
+      - --rpc-http-host=0.0.0.0
+      - --rpc-http-api=ETH,NET,WEB3,QBFT,PERM
+      - --host-allowlist=localhost,127.0.0.1,node1
+      - --min-gas-price=0
+    ports:
+      - 127.0.0.1:8545:8545
+    volumes:
+      - ${TOKENRAIL_BESU_RUNTIME_DIR}/genesis.json:/config/genesis.json:ro
+      - ${TOKENRAIL_BESU_RUNTIME_DIR}/static-nodes.json:/config/static-nodes.json:ro
+      - ${TOKENRAIL_BESU_RUNTIME_DIR}/node1/key.priv:/keys/key.priv:ro
+      - ${TOKENRAIL_BESU_RUNTIME_DIR}/node1/data:/data
+    networks:
+      tokenrail:
+        ipv4_address: 10.42.0.11
+
+  node2:
+    <<: *besu-common
+    command:
+      - --data-path=/data
+      - --genesis-file=/config/genesis.json
+      - --node-private-key-file=/keys/key.priv
+      - --network-id=20260913
+      - --p2p-host=10.42.0.12
+      - --p2p-port=30303
+      - --discovery-enabled=false
+      - --static-nodes-file=/config/static-nodes.json
+      - --permissions-nodes-config-file=/data/permissions_config.toml
+      - --permissions-nodes-config-file-enabled=true
+      - --permissions-accounts-config-file=/data/permissions_config.toml
+      - --permissions-accounts-config-file-enabled=true
+      - --rpc-http-enabled=true
+      - --rpc-http-host=0.0.0.0
+      - --rpc-http-api=ETH,NET,WEB3,QBFT,PERM
+      - --host-allowlist=localhost,127.0.0.1,node2
+      - --min-gas-price=0
+    ports:
+      - 127.0.0.1:8546:8545
+    volumes:
+      - ${TOKENRAIL_BESU_RUNTIME_DIR}/genesis.json:/config/genesis.json:ro
+      - ${TOKENRAIL_BESU_RUNTIME_DIR}/static-nodes.json:/config/static-nodes.json:ro
+      - ${TOKENRAIL_BESU_RUNTIME_DIR}/node2/key.priv:/keys/key.priv:ro
+      - ${TOKENRAIL_BESU_RUNTIME_DIR}/node2/data:/data
+    networks:
+      tokenrail:
+        ipv4_address: 10.42.0.12
+
+  node3:
+    <<: *besu-common
+    command:
+      - --data-path=/data
+      - --genesis-file=/config/genesis.json
+      - --node-private-key-file=/keys/key.priv
+      - --network-id=20260913
+      - --p2p-host=10.42.0.13
+      - --p2p-port=30303
+      - --discovery-enabled=false
+      - --static-nodes-file=/config/static-nodes.json
+      - --permissions-nodes-config-file=/data/permissions_config.toml
+      - --permissions-nodes-config-file-enabled=true
+      - --permissions-accounts-config-file=/data/permissions_config.toml
+      - --permissions-accounts-config-file-enabled=true
+      - --rpc-http-enabled=true
+      - --rpc-http-host=0.0.0.0
+      - --rpc-http-api=ETH,NET,WEB3,QBFT,PERM
+      - --host-allowlist=localhost,127.0.0.1,node3
+      - --min-gas-price=0
+    ports:
+      - 127.0.0.1:8547:8545
+    volumes:
+      - ${TOKENRAIL_BESU_RUNTIME_DIR}/genesis.json:/config/genesis.json:ro
+      - ${TOKENRAIL_BESU_RUNTIME_DIR}/static-nodes.json:/config/static-nodes.json:ro
+      - ${TOKENRAIL_BESU_RUNTIME_DIR}/node3/key.priv:/keys/key.priv:ro
+      - ${TOKENRAIL_BESU_RUNTIME_DIR}/node3/data:/data
+    networks:
+      tokenrail:
+        ipv4_address: 10.42.0.13
+
+  node4:
+    <<: *besu-common
+    command:
+      - --data-path=/data
+      - --genesis-file=/config/genesis.json
+      - --node-private-key-file=/keys/key.priv
+      - --network-id=20260913
+      - --p2p-host=10.42.0.14
+      - --p2p-port=30303
+      - --discovery-enabled=false
+      - --static-nodes-file=/config/static-nodes.json
+      - --permissions-nodes-config-file=/data/permissions_config.toml
+      - --permissions-nodes-config-file-enabled=true
+      - --permissions-accounts-config-file=/data/permissions_config.toml
+      - --permissions-accounts-config-file-enabled=true
+      - --rpc-http-enabled=true
+      - --rpc-http-host=0.0.0.0
+      - --rpc-http-api=ETH,NET,WEB3,QBFT,PERM
+      - --host-allowlist=localhost,127.0.0.1,node4
+      - --min-gas-price=0
+    ports:
+      - 127.0.0.1:8548:8545
+    volumes:
+      - ${TOKENRAIL_BESU_RUNTIME_DIR}/genesis.json:/config/genesis.json:ro
+      - ${TOKENRAIL_BESU_RUNTIME_DIR}/static-nodes.json:/config/static-nodes.json:ro
+      - ${TOKENRAIL_BESU_RUNTIME_DIR}/node4/key.priv:/keys/key.priv:ro
+      - ${TOKENRAIL_BESU_RUNTIME_DIR}/node4/data:/data
+    networks:
+      tokenrail:
+        ipv4_address: 10.42.0.14
+
+networks:
+  tokenrail:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.42.0.0/24
+
+volumes:
+  tokenrail-postgres:

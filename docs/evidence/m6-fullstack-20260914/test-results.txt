@@ -1,0 +1,6 @@
+TokenRail M6 local verification, 2026-09-14 Asia/Dhaka
+contracts: 51 passed, 0 failed (including PaymentEscrow 6 passed)
+M4WorkflowIT + M5ProjectionIT: 8 passed, 0 failed
+M51ReliabilityIT: 8 passed, 0 failed
+M6BusinessIT: 2 passed, 0 failed
+browser: 4 pages loaded; operator roles visible; 0 console errors/warnings

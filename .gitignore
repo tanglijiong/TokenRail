@@ -1,0 +1,21 @@
+# Foundry build output and cache
+contracts/cache/
+contracts/out/
+contracts/broadcast/
+contracts/node_modules/
+deploy/.runtime/
+apps/server/target/
+
+# Local environment and generated secrets
+.env
+.env.*
+!.env.example
+*.key
+*.keystore
+
+# Local process output
+*.log
+*.pid
+.DS_Store
+output/playwright/
+output/demo/

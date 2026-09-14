@@ -1,0 +1,43 @@
+name: Release acceptance
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  clean-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+          cache-dependency-path: apps/server/pom.xml
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: contracts/package-lock.json
+      - name: Run clean-source M0-M7 acceptance
+        run: scripts/test-m7-release.sh
+      - name: Upload release evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m7-release-acceptance
+          path: |
+            docs/evidence/m7-release-20260914/clean-release.log
+            docs/evidence/m7-release-20260914/clean-deployment-manifest.json
+            docs/evidence/m7-release-20260914/clean-m6-verify.log
+          if-no-files-found: warn
+      - name: Stop integration environment
+        if: always()
+        run: scripts/besu-network.sh down
