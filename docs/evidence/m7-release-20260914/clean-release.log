@@ -1,0 +1,571 @@
+TokenRail M7 clean release acceptance
+commit=cd78115f641a3d210756e490249bd0603d501c26
+started=2026-09-14T17:31:05Z
+work_dir=/var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T//tokenrail-m7-clean.mKPsOx
+v25.8.1
+11.11.0
+openjdk version "21.0.12.1" 2026-08-18
+OpenJDK Runtime Environment Homebrew (build 21.0.12.1)
+OpenJDK 64-Bit Server VM Homebrew (build 21.0.12.1, mixed mode, sharing)
+Apache Maven 3.9.9 (8e8579a9e76f7d015ee5ec7bfcdc97d260186937)
+Maven home: /opt/homebrew/Cellar/maven/3.9.9/libexec
+Java version: 21.0.12.1, vendor: Homebrew, runtime: /opt/homebrew/Cellar/openjdk@21/21.0.12.1/libexec/openjdk.jdk/Contents/Home
+Default locale: zh_CN_#Hans, platform encoding: UTF-8
+OS name: "mac os x", version: "15.5", arch: "aarch64", family: "mac"
+Docker version 26.1.4, build 5650f9b102
+
+added 7 packages in 1s
+
+> @tokenrail/contracts@0.0.1 check
+> ../scripts/check-solidity-format.sh && forge build --sizes && forge lint --deny warnings && ../scripts/run-contract-tests.sh
+
+Compiling 30 files with Solc 0.8.30
+Solc 0.8.30 finished in 1.65s
+Compiler run successful!
+
+╭---------------------------+------------------+-------------------+--------------------+---------------------╮
+| Contract                  | Runtime Size (B) | Initcode Size (B) | Runtime Margin (B) | Initcode Margin (B) |
++=============================================================================================================+
+| BondToken                 | 4,525            | 5,977             | 20,051             | 43,175              |
+|---------------------------+------------------+-------------------+--------------------+---------------------|
+| DepositToken              | 4,235            | 5,280             | 20,341             | 43,872              |
+|---------------------------+------------------+-------------------+--------------------+---------------------|
+| DvPActor                  | 983              | 1,011             | 23,593             | 48,141              |
+|---------------------------+------------------+-------------------+--------------------+---------------------|
+| DvPInvariantHandler       | 1,902            | 26,553            | 22,674             | 22,599              |
+|---------------------------+------------------+-------------------+--------------------+---------------------|
+| DvPSettlement             | 5,283            | 6,213             | 19,293             | 42,939              |
+|---------------------------+------------------+-------------------+--------------------+---------------------|
+| IdentityRegistry          | 3,192            | 3,616             | 21,384             | 45,536              |
+|---------------------------+------------------+-------------------+--------------------+---------------------|
+| M2AtomicityReceiptHarness | 1,754            | 21,226            | 22,822             | 27,926              |
+|---------------------------+------------------+-------------------+--------------------+---------------------|
+| PaymentActor              | 1,052            | 1,080             | 23,524             | 48,072              |
+|---------------------------+------------------+-------------------+--------------------+---------------------|
+| PaymentEscrow             | 4,367            | 4,980             | 20,209             | 44,172              |
+|---------------------------+------------------+-------------------+--------------------+---------------------|
+| ReceiptActor              | 917              | 945               | 23,659             | 48,207              |
+|---------------------------+------------------+-------------------+--------------------+---------------------|
+| ReceiptRevertingCashToken | 1,006            | 1,034             | 23,570             | 48,118              |
+|---------------------------+------------------+-------------------+--------------------+---------------------|
+| RevertingCashToken        | 1,006            | 1,034             | 23,570             | 48,118              |
+|---------------------------+------------------+-------------------+--------------------+---------------------|
+| SafeERC20                 | 44               | 94                | 24,532             | 49,058              |
+|---------------------------+------------------+-------------------+--------------------+---------------------|
+| StateTransitionLab        | 724              | 924               | 23,852             | 48,228              |
+|---------------------------+------------------+-------------------+--------------------+---------------------|
+| StorageSlot               | 44               | 94                | 24,532             | 49,058              |
+|---------------------------+------------------+-------------------+--------------------+---------------------|
+| TokenActor                | 2,068            | 2,096             | 22,508             | 47,056              |
+|---------------------------+------------------+-------------------+--------------------+---------------------|
+| UnauthorisedCaller        | 210              | 236               | 24,366             | 48,916              |
+╰---------------------------+------------------+-------------------+--------------------+---------------------╯
+
+No files changed, compilation skipped
+No files changed, compilation skipped
+
+Ran 5 tests for test/M1Tokens.t.sol:IdentityRegistryTest
+[PASS] testCannotFreezeUnknownIdentity() (gas: 12700)
+[PASS] testEligibilityReflectsAssetPermissionFreezeAndExpiry() (gas: 54962)
+[PASS] testOnlyAdminCanSetSystemAccount() (gas: 21675)
+[PASS] testOnlyComplianceRoleCanChangeIdentity() (gas: 25212)
+[PASS] testOnlyDeployedContractsCanBecomeSystemAccounts() (gas: 39400)
+Suite result: ok. 5 passed; 0 failed; 0 skipped; finished in 3.06ms (346.88µs CPU time)
+
+Ran 5 tests for test/StateTransitionLab.t.sol:StateTransitionLabTest
+[PASS] testConstructorRejectsInitialValueAboveLimit() (gas: 32858)
+[PASS] testLimitFailureLeavesStateUnchanged() (gas: 10796)
+[PASS] testSuccessfulCallCommitsState() (gas: 13073)
+[PASS] testUnauthorisedCallerCannotChangeState() (gas: 85919)
+[PASS] testWriteBeforeRevertIsRolledBack() (gas: 13535)
+Suite result: ok. 5 passed; 0 failed; 0 skipped; finished in 3.09ms (2.43ms CPU time)
+
+Ran 6 tests for test/PaymentEscrow.t.sol:PaymentEscrowTest
+[PASS] testDirectDonationDoesNotBecomePaymentLiability() (gas: 65065)
+[PASS] testFrozenPayeeKeepsFundsUntilRefundIsAllowed() (gas: 220374)
+[PASS] testFundAndReleaseOnlyByNamedAttestor() (gas: 234086)
+[PASS] testInvalidTermsAndDuplicateIdAreRejected() (gas: 235729)
+[PASS] testPauseBlocksFundAndReleaseButDoesNotBypassRefundRules() (gas: 227278)
+[PASS] testRefundOnlyAfterDeadlineAndTerminalStateCannotRepeat() (gas: 216994)
+Suite result: ok. 6 passed; 0 failed; 0 skipped; finished in 3.87ms (1.76ms CPU time)
+
+Ran 10 tests for test/M1Tokens.t.sol:DepositTokenTest
+[PASS] testConversionIdCannotMintTwice() (gas: 96718)
+[PASS] testDirectTransferCannotBypassRecipientEligibility() (gas: 114681)
+[PASS] testFrozenHolderCannotTransferOrRedeem() (gas: 143475)
+[PASS] testMintTransferAndRedeemUseTwoDecimalMinorUnits() (gas: 174784)
+[PASS] testOnlyIssuerCanMint() (gas: 21362)
+[PASS] testPauseBlocksEveryBalanceUpdate() (gas: 212974)
+[PASS] testRedemptionIdCannotBurnTwice() (gas: 131764)
+[PASS] testRejectedMintDoesNotConsumeConversionId() (gas: 183609)
+[PASS] testTransferFromCannotBypassFrozenRecipient() (gas: 155368)
+[PASS] testZeroIdsAndAmountsAreRejected() (gas: 19561)
+Suite result: ok. 10 passed; 0 failed; 0 skipped; finished in 3.87ms (2.13ms CPU time)
+
+Ran 7 tests for test/M1Tokens.t.sol:BondTokenTest
+[PASS] testBondMetadataAndIssuance() (gas: 100010)
+[PASS] testCashOnlyIdentityCannotReceiveBondByIssueOrTransfer() (gas: 153831)
+[PASS] testFrozenBondHolderCannotTransfer() (gas: 117150)
+[PASS] testIssuanceCapCannotBeExceeded() (gas: 99032)
+[PASS] testIssueIdCannotBeReplayed() (gas: 96792)
+[PASS] testOnlyIssuerCanIssue() (gas: 21370)
+[PASS] testZeroIssueIdAndQuantityAreRejected() (gas: 17255)
+Suite result: ok. 7 passed; 0 failed; 0 skipped; finished in 26.07ms (1.72ms CPU time)
+
+Ran 15 tests for test/DvPSettlement.t.sol:DvPSettlementTest
+[PASS] testAllowanceDoesNotReplaceBuyerConfirmation() (gas: 228137)
+[PASS] testAtomicSettlementMovesExactCashAndBondAndEmitsEvidence() (gas: 305163)
+[PASS] testCreatedTermsCannotBeReplaced() (gas: 160233)
+[PASS] testEitherPartyCanCancelBeforeExpiryAndSettlementCannotFollow() (gas: 374981)
+[PASS] testExecutionOneSecondBeforeExpirySucceeds() (gas: 286380)
+[PASS] testExpiryBoundaryBlocksExecutionAndCanBeFinalised() (gas: 248438)
+[PASS] testFreezeAfterConfirmationBlocksThenAllowsRetry() (gas: 311346)
+[PASS] testFuzzSettlementMovesExactAmounts(uint96,uint96) (runs: 256, μ: 301547, ~: 301566)
+[PASS] testInstructionIdAndSettlementCannotBeReplayed() (gas: 292203)
+[PASS] testInsufficientBalanceAndAllowanceLeaveInstructionReady() (gas: 430610)
+[PASS] testInvalidTermsAndIneligibleBuyerAreRejected() (gas: 304513)
+[PASS] testOnlyNamedBuyerCanConfirmAndOnlyPartyCanCancel() (gas: 164030)
+[PASS] testOnlySettlementOperatorCanExecute() (gas: 239658)
+[PASS] testPausedSettlementCanBeCancelledButNotExecutedOrCreated() (gas: 396677)
+[PASS] testSecondLegRevertRollsBackFirstLegAndState() (gas: 1755418)
+Suite result: ok. 15 passed; 0 failed; 0 skipped; finished in 26.08ms (27.25ms CPU time)
+
+Ran 3 tests for test/DvPSettlement.t.sol:DvPSettlementInvariantTest
+[PASS] invariantAssetSupplyIsConservedAcrossParticipants() (runs: 64, calls: 2048, reverts: 0)
+
+╭---------------------+----------------------+-------+---------+----------╮
+| Contract            | Selector             | Calls | Reverts | Discards |
++=========================================================================+
+| DvPInvariantHandler | attemptCancelSettled | 677   | 0       | 0        |
+|---------------------+----------------------+-------+---------+----------|
+| DvPInvariantHandler | attemptReplay        | 667   | 0       | 0        |
+|---------------------+----------------------+-------+---------+----------|
+| DvPInvariantHandler | settle               | 704   | 0       | 0        |
+╰---------------------+----------------------+-------+---------+----------╯
+
+[PASS] invariantAtLeastOneRealSettlementSucceeded() (runs: 64, calls: 2048, reverts: 0)
+
+╭---------------------+----------------------+-------+---------+----------╮
+| Contract            | Selector             | Calls | Reverts | Discards |
++=========================================================================+
+| DvPInvariantHandler | attemptCancelSettled | 677   | 0       | 0        |
+|---------------------+----------------------+-------+---------+----------|
+| DvPInvariantHandler | attemptReplay        | 667   | 0       | 0        |
+|---------------------+----------------------+-------+---------+----------|
+| DvPInvariantHandler | settle               | 704   | 0       | 0        |
+╰---------------------+----------------------+-------+---------+----------╯
+
+[PASS] invariantIllegalTerminalActionsNeverSucceed() (runs: 64, calls: 2048, reverts: 0)
+
+╭---------------------+----------------------+-------+---------+----------╮
+| Contract            | Selector             | Calls | Reverts | Discards |
++=========================================================================+
+| DvPInvariantHandler | attemptCancelSettled | 677   | 0       | 0        |
+|---------------------+----------------------+-------+---------+----------|
+| DvPInvariantHandler | attemptReplay        | 667   | 0       | 0        |
+|---------------------+----------------------+-------+---------+----------|
+| DvPInvariantHandler | settle               | 704   | 0       | 0        |
+╰---------------------+----------------------+-------+---------+----------╯
+
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 269.62ms (711.65ms CPU time)
+
+Ran 7 test suites in 272.36ms (335.67ms CPU time): 51 tests passed, 0 failed, 0 skipped (51 total tests)
+forge    forge Version: 1.7.1
+cast     cast Version: 1.7.1
+anvil    anvil Version: 1.7.1
+java     openjdk 21.0.12.1 2026-08-18
+mvn      Apache Maven 3.9.9 (8e8579a9e76f7d015ee5ec7bfcdc97d260186937)
+docker   Docker version 26.1.4, build 5650f9b102
+M0 signed transaction verified
+  chainId:        31337
+  signer address: 0xF1B42500C73549e01C0c787208CD4cf2756b813C
+  transaction:    0xa6eac047cc4e619d054fd9fb54e214d466ca21019da3b20533eae28917f562d4
+  blockNumber:    0x1
+  gasUsed:        0x5208
+  status:         0x1
+  nonce:          0 -> 1
+  recipient wei:  0 -> 1
+M0 contract state transition verified
+  contract:        0x1B13401Eb8A986B46f9862be1f39a4cb645B8Ff4
+  success tx:      0x1badffef7ab7f0e777b25f970fa0b5f4b3ba1355bb3e34954a28b6c31369cf1a (status 0x1)
+  counter:         10 -> 25
+  reverted tx:     0xdf565a314eda08b7dcf38d273c05bd4810603a220df4a763fc581171b6c76841 (status 0x0)
+  revert gasUsed:  0x67f0
+  revert nonce:    3 -> 4
+  counter after revert: 25
+No private key is written to /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx or printed above.
+M2 second-leg failure receipt verified
+  transaction:      0x12bfc57babd7e3c9e9913908bf70be23a94f1db02be6843f00e022aa5411eebf
+  status:           0x0
+  receipt logs:     0
+  gasUsed:          0x1f0e1
+  seller bond:      1000 -> 1000
+  buyer bond:       0 -> 0
+  bond allowance:   1000 -> 1000
+  buyer cash:       100000000 -> 100000000
+  instruction state:2 -> 2 (READY)
+The ephemeral deployer key was not written to disk or logs.
+Removed generated Besu runtime.
+Prepared four-validator QBFT runtime at /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/deploy/.runtime/besu
+ Container tokenrail-m3-node2-1  Creating
+ Container tokenrail-m3-node1-1  Creating
+ Container tokenrail-m3-node4-1  Creating
+ Container tokenrail-m3-node3-1  Creating
+ Container tokenrail-m3-node4-1  Created
+ Container tokenrail-m3-node2-1  Created
+ Container tokenrail-m3-node3-1  Created
+ Container tokenrail-m3-node1-1  Created
+ Container tokenrail-m3-node2-1  Starting
+ Container tokenrail-m3-node3-1  Starting
+ Container tokenrail-m3-node4-1  Starting
+ Container tokenrail-m3-node1-1  Starting
+ Container tokenrail-m3-node1-1  Started
+ Container tokenrail-m3-node3-1  Started
+ Container tokenrail-m3-node2-1  Started
+ Container tokenrail-m3-node4-1  Started
+TokenRail Besu RPC ready at http://127.0.0.1:8545
+M3 contracts deployed; manifest: /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/deploy/.runtime/besu/deployment-manifest.json
+  IdentityRegistry 0xE86d7b6Edc00d143B76b25A70f6AcD6A05588180
+  DepositToken     0xee874AC97916b297F769434CEAe4634F76e7cf18
+  BondToken        0xd8Fa25F7e80fC1978B8d62fDA562E3140dd5F557
+  DvPSettlement    0x0CeE885e8541bE19f0B8B18FA11379f3C7839784
+  PaymentEscrow    0xAa93fcb2DF52963201C668C179bb7Db988cDF848
+ Container tokenrail-m3-node4-1  Stopping
+ Container tokenrail-m3-node4-1  Stopped
+ Container tokenrail-m3-node4-1  Starting
+ Container tokenrail-m3-node4-1  Started
+ Container tokenrail-m3-node4-1  Stopping
+ Container tokenrail-m3-node3-1  Stopping
+ Container tokenrail-m3-node4-1  Stopped
+ Container tokenrail-m3-node3-1  Stopped
+ Container tokenrail-m3-node3-1  Starting
+ Container tokenrail-m3-node4-1  Starting
+ Container tokenrail-m3-node3-1  Started
+ Container tokenrail-m3-node4-1  Started
+ Container tokenrail-m3-node2-1  Restarting
+ Container tokenrail-m3-node4-1  Restarting
+ Container tokenrail-m3-node3-1  Restarting
+ Container tokenrail-m3-node1-1  Restarting
+ Container tokenrail-m3-node1-1  Started
+ Container tokenrail-m3-node2-1  Started
+ Container tokenrail-m3-node4-1  Started
+ Container tokenrail-m3-node3-1  Started
+M3 four-validator Besu verification passed
+  chain ID:                    20260913
+  validators:                  4
+  node 1 peers:                3
+  unlisted transaction sender: rejected
+  one-validator-down blocks:   10 -> 12
+  two-validator-down head:     13 -> 13 (stalled)
+  recovered head:              14
+  deployment manifest:         /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/deploy/.runtime/besu/deployment-manifest.json
+Besu runtime already prepared at /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/deploy/.runtime/besu
+ Container tokenrail-m3-node4-1  Running
+ Container tokenrail-m3-node1-1  Running
+ Container tokenrail-m3-node3-1  Running
+ Container tokenrail-m3-node2-1  Running
+TokenRail Besu RPC ready at http://127.0.0.1:8545
+M3 contracts deployed; manifest: /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/deploy/.runtime/besu/deployment-manifest.json
+  IdentityRegistry 0x3C7089C8970bed42846255f72A737B94223C1B43
+  DepositToken     0x91C0fC7209D1964f8C9072008b1a2998991e9bFd
+  BondToken        0xc3d028C880cfd7BF19bB005A76dA68C90c482a6f
+  DvPSettlement    0x5d505ACE4F3f9E7a68d8Fc966247674f3f0F786E
+  PaymentEscrow    0xC528Ee76FD27dB57022A57Ba8A9Fe3D9a4eeAda6
+ Container tokenrail-m3-postgres-1  Running
+M4 environment ready. Load /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/deploy/.runtime/m4/server.env before starting or testing the server.
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -------------------< io.tokenrail:tokenrail-server >--------------------
+[INFO] Building TokenRail Server 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ tokenrail-server ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 16 resources from src/main/resources to target/classes
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tokenrail-server ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 43 source files with javac [debug parameters release 21] to target/classes
+[INFO]
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ tokenrail-server ---
+[INFO] skip non existing resourceDirectory /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/apps/server/src/test/resources
+[INFO]
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ tokenrail-server ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 5 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/apps/server/src/test/java/io/tokenrail/M51ReliabilityIT.java: 某些输入文件使用或覆盖了已过时的 API。
+[INFO] /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/apps/server/src/test/java/io/tokenrail/M51ReliabilityIT.java: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+[INFO]
+[INFO] --- surefire:3.5.6:test (default-test) @ tokenrail-server ---
+[INFO]
+[INFO] --- jar:3.5.1:jar (default-jar) @ tokenrail-server ---
+[INFO] Building jar: /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/apps/server/target/tokenrail-server-0.0.1-SNAPSHOT.jar
+[INFO]
+[INFO] --- spring-boot:4.1.1:repackage (repackage) @ tokenrail-server ---
+[INFO] Replacing main artifact /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/apps/server/target/tokenrail-server-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/apps/server/target/tokenrail-server-0.0.1-SNAPSHOT.jar.original
+[INFO]
+[INFO] --- failsafe:3.5.6:integration-test (default) @ tokenrail-server ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running io.tokenrail.M5ProjectionIT
+23:33:13.406 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [io.tokenrail.M5ProjectionIT]: M5ProjectionIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:33:13.452 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration io.tokenrail.TokenRailApplication for test class io.tokenrail.M5ProjectionIT
+23:33:13.482 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [io.tokenrail.M5ProjectionIT]: M5ProjectionIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:33:13.483 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration io.tokenrail.TokenRailApplication for test class io.tokenrail.M5ProjectionIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-14T23:33:13.628+06:00  INFO 37609 --- [tokenrail-server] [           main] io.tokenrail.M5ProjectionIT              : Starting M5ProjectionIT using Java 21.0.12.1 with PID 37609 (started by tanglijiong in /private/var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/apps/server)
+2026-09-14T23:33:13.629+06:00  INFO 37609 --- [tokenrail-server] [           main] io.tokenrail.M5ProjectionIT              : The following 1 profile is active: "reliability-test"
+2026-09-14T23:33:14.072+06:00  INFO 37609 --- [tokenrail-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-14T23:33:14.168+06:00  INFO 37609 --- [tokenrail-server] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5a06904
+2026-09-14T23:33:14.168+06:00  INFO 37609 --- [tokenrail-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-14T23:33:14.178+06:00  INFO 37609 --- [tokenrail-server] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://127.0.0.1:5432/tokenrail (PostgreSQL 18.6)
+2026-09-14T23:33:14.220+06:00  INFO 37609 --- [tokenrail-server] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.016s)
+2026-09-14T23:33:14.261+06:00  INFO 37609 --- [tokenrail-server] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 9
+2026-09-14T23:33:14.262+06:00  INFO 37609 --- [tokenrail-server] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-14T23:33:14.631+06:00  INFO 37609 --- [tokenrail-server] [           main] io.tokenrail.M5ProjectionIT              : Started M5ProjectionIT in 1.124 seconds (process running for 1.584)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/tanglijiong/.m2/repository/net/bytebuddy/byte-buddy-agent/1.18.11/byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 39.90 s -- in io.tokenrail.M5ProjectionIT
+[INFO] Running io.tokenrail.M4WorkflowIT
+2026-09-14T23:33:53.237+06:00  INFO 37609 --- [tokenrail-server] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.tokenrail.M4WorkflowIT]: M4WorkflowIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-14T23:33:53.238+06:00  INFO 37609 --- [tokenrail-server] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration io.tokenrail.TokenRailApplication for test class io.tokenrail.M4WorkflowIT
+2026-09-14T23:33:53.239+06:00  INFO 37609 --- [tokenrail-server] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.tokenrail.M4WorkflowIT]: M4WorkflowIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-14T23:33:53.240+06:00  INFO 37609 --- [tokenrail-server] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration io.tokenrail.TokenRailApplication for test class io.tokenrail.M4WorkflowIT
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 26.37 s -- in io.tokenrail.M4WorkflowIT
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- failsafe:3.5.6:verify (default) @ tokenrail-server ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:09 min
+[INFO] Finished at: 2026-09-14T23:34:19+06:00
+[INFO] ------------------------------------------------------------------------
+Reliability evidence: /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/deploy/.runtime/m51/run.Rt5JyS (database m51_1789407261_37684)
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -------------------< io.tokenrail:tokenrail-server >--------------------
+[INFO] Building TokenRail Server 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ tokenrail-server ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 16 resources from src/main/resources to target/classes
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tokenrail-server ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ tokenrail-server ---
+[INFO] skip non existing resourceDirectory /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/apps/server/src/test/resources
+[INFO]
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ tokenrail-server ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- surefire:3.5.6:test (default-test) @ tokenrail-server ---
+[INFO]
+[INFO] --- jar:3.5.1:jar (default-jar) @ tokenrail-server ---
+[INFO]
+[INFO] --- spring-boot:4.1.1:repackage (repackage) @ tokenrail-server ---
+[INFO] Replacing main artifact /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/apps/server/target/tokenrail-server-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/apps/server/target/tokenrail-server-0.0.1-SNAPSHOT.jar.original
+[INFO]
+[INFO] --- failsafe:3.5.6:integration-test (default) @ tokenrail-server ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running io.tokenrail.M51ReliabilityIT
+23:34:27.597 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [io.tokenrail.M51ReliabilityIT]: M51ReliabilityIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:34:27.637 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration io.tokenrail.TokenRailApplication for test class io.tokenrail.M51ReliabilityIT
+23:34:27.667 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [io.tokenrail.M51ReliabilityIT]: M51ReliabilityIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:34:27.668 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration io.tokenrail.TokenRailApplication for test class io.tokenrail.M51ReliabilityIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-14T23:34:27.800+06:00  INFO 38186 --- [tokenrail-server] [           main] io.tokenrail.M51ReliabilityIT            : Starting M51ReliabilityIT using Java 21.0.12.1 with PID 38186 (started by tanglijiong in /private/var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/apps/server)
+2026-09-14T23:34:27.801+06:00  INFO 38186 --- [tokenrail-server] [           main] io.tokenrail.M51ReliabilityIT            : The following 1 profile is active: "reliability-test"
+2026-09-14T23:34:28.294+06:00  INFO 38186 --- [tokenrail-server] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-09-14T23:34:28.301+06:00  INFO 38186 --- [tokenrail-server] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-14T23:34:28.301+06:00  INFO 38186 --- [tokenrail-server] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-09-14T23:34:28.321+06:00  INFO 38186 --- [tokenrail-server] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 511 ms
+2026-09-14T23:34:28.468+06:00  INFO 38186 --- [tokenrail-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-14T23:34:28.563+06:00  INFO 38186 --- [tokenrail-server] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4ae2c01b
+2026-09-14T23:34:28.564+06:00  INFO 38186 --- [tokenrail-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-14T23:34:28.575+06:00  INFO 38186 --- [tokenrail-server] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://127.0.0.1:5432/m51_1789407261_37684 (PostgreSQL 18.6)
+2026-09-14T23:34:28.604+06:00  INFO 38186 --- [tokenrail-server] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-09-14T23:34:28.606+06:00  INFO 38186 --- [tokenrail-server] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.009s)
+2026-09-14T23:34:28.613+06:00  INFO 38186 --- [tokenrail-server] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-09-14T23:34:28.658+06:00  INFO 38186 --- [tokenrail-server] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-09-14T23:34:28.666+06:00  INFO 38186 --- [tokenrail-server] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - m4 workflow"
+2026-09-14T23:34:28.702+06:00  INFO 38186 --- [tokenrail-server] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "2 - m5 projection and reconciliation"
+2026-09-14T23:34:28.728+06:00  INFO 38186 --- [tokenrail-server] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "3 - workflow leases"
+2026-09-14T23:34:28.741+06:00  INFO 38186 --- [tokenrail-server] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "4 - deployment isolation"
+2026-09-14T23:34:28.772+06:00  INFO 38186 --- [tokenrail-server] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "5 - reconciliation evidence and rebuild"
+2026-09-14T23:34:28.785+06:00  INFO 38186 --- [tokenrail-server] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "6 - projection block history"
+2026-09-14T23:34:28.800+06:00  INFO 38186 --- [tokenrail-server] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "7 - durable admin jobs"
+2026-09-14T23:34:28.816+06:00  INFO 38186 --- [tokenrail-server] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "8 - transaction target binding"
+2026-09-14T23:34:28.827+06:00  INFO 38186 --- [tokenrail-server] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "9 - business commands"
+2026-09-14T23:34:28.846+06:00  INFO 38186 --- [tokenrail-server] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 9 migrations to schema "public", now at version v9 (execution time 00:00.105s)
+2026-09-14T23:34:29.097+06:00  INFO 38186 --- [tokenrail-server] [           main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-09-14T23:34:29.261+06:00  INFO 38186 --- [tokenrail-server] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-09-14T23:34:29.293+06:00  INFO 38186 --- [tokenrail-server] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 63936 (http) with context path '/'
+2026-09-14T23:34:29.298+06:00  INFO 38186 --- [tokenrail-server] [           main] io.tokenrail.M51ReliabilityIT            : Started M51ReliabilityIT in 1.615 seconds (process running for 2.152)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/tanglijiong/.m2/repository/net/bytebuddy/byte-buddy-agent/1.18.11/byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-09-14T23:34:50.091+06:00  INFO 38186 --- [tokenrail-server] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-14T23:34:50.091+06:00  INFO 38186 --- [tokenrail-server] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-14T23:34:50.091+06:00  INFO 38186 --- [tokenrail-server] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 40.54 s -- in io.tokenrail.M51ReliabilityIT
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- failsafe:3.5.6:verify (default) @ tokenrail-server ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  44.272 s
+[INFO] Finished at: 2026-09-14T23:35:10+06:00
+[INFO] ------------------------------------------------------------------------
+Besu runtime already prepared at /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/deploy/.runtime/besu
+ Container tokenrail-m3-node4-1  Running
+ Container tokenrail-m3-node2-1  Running
+ Container tokenrail-m3-node1-1  Running
+ Container tokenrail-m3-node3-1  Running
+TokenRail Besu RPC ready at http://127.0.0.1:8545
+M3 contracts deployed; manifest: /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/deploy/.runtime/besu/deployment-manifest.json
+  IdentityRegistry 0x795b2E3103D5F8DF6877961F901670395dF128e7
+  DepositToken     0x1446f59FF8377D52A6948C7a96533a560a791973
+  BondToken        0xeC1d14b178dd4e167497E30bD787Ef4BC4a2c915
+  DvPSettlement    0x173a3f8a79415151Fc81338A2B32748087020810
+  PaymentEscrow    0x747f62bc4f473Ac6E2aCcc1F304E35cB68ba016A
+ Container tokenrail-m3-postgres-1  Running
+M4 environment ready. Load /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/deploy/.runtime/m4/server.env before starting or testing the server.
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -------------------< io.tokenrail:tokenrail-server >--------------------
+[INFO] Building TokenRail Server 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ tokenrail-server ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 16 resources from src/main/resources to target/classes
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tokenrail-server ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ tokenrail-server ---
+[INFO] skip non existing resourceDirectory /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/apps/server/src/test/resources
+[INFO]
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ tokenrail-server ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- surefire:3.5.6:test (default-test) @ tokenrail-server ---
+[INFO]
+[INFO] --- jar:3.5.1:jar (default-jar) @ tokenrail-server ---
+[INFO]
+[INFO] --- spring-boot:4.1.1:repackage (repackage) @ tokenrail-server ---
+[INFO] Replacing main artifact /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/apps/server/target/tokenrail-server-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/apps/server/target/tokenrail-server-0.0.1-SNAPSHOT.jar.original
+[INFO]
+[INFO] --- failsafe:3.5.6:integration-test (default) @ tokenrail-server ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running io.tokenrail.M6BusinessIT
+23:35:37.686 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [io.tokenrail.M6BusinessIT]: M6BusinessIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:35:37.724 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration io.tokenrail.TokenRailApplication for test class io.tokenrail.M6BusinessIT
+23:35:37.758 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [io.tokenrail.M6BusinessIT]: M6BusinessIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:35:37.759 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration io.tokenrail.TokenRailApplication for test class io.tokenrail.M6BusinessIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-14T23:35:37.883+06:00  INFO 39180 --- [tokenrail-server] [           main] io.tokenrail.M6BusinessIT                : Starting M6BusinessIT using Java 21.0.12.1 with PID 39180 (started by tanglijiong in /private/var/folders/6d/hy541pp94p1gc6ljx9hfzmgh0000gn/T/tokenrail-m7-clean.mKPsOx/apps/server)
+2026-09-14T23:35:37.883+06:00  INFO 39180 --- [tokenrail-server] [           main] io.tokenrail.M6BusinessIT                : The following 1 profile is active: "reliability-test"
+2026-09-14T23:35:38.364+06:00  INFO 39180 --- [tokenrail-server] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-09-14T23:35:38.371+06:00  INFO 39180 --- [tokenrail-server] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-14T23:35:38.371+06:00  INFO 39180 --- [tokenrail-server] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-09-14T23:35:38.396+06:00  INFO 39180 --- [tokenrail-server] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 499 ms
+2026-09-14T23:35:38.534+06:00  INFO 39180 --- [tokenrail-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-14T23:35:38.623+06:00  INFO 39180 --- [tokenrail-server] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@58f97013
+2026-09-14T23:35:38.623+06:00  INFO 39180 --- [tokenrail-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-14T23:35:38.634+06:00  INFO 39180 --- [tokenrail-server] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://127.0.0.1:5432/tokenrail (PostgreSQL 18.6)
+2026-09-14T23:35:38.675+06:00  INFO 39180 --- [tokenrail-server] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 9 migrations (execution time 00:00.016s)
+2026-09-14T23:35:38.695+06:00  INFO 39180 --- [tokenrail-server] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 9
+2026-09-14T23:35:38.697+06:00  INFO 39180 --- [tokenrail-server] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-09-14T23:35:38.944+06:00  INFO 39180 --- [tokenrail-server] [           main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-09-14T23:35:39.113+06:00  INFO 39180 --- [tokenrail-server] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-09-14T23:35:39.143+06:00  INFO 39180 --- [tokenrail-server] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 64196 (http) with context path '/'
+2026-09-14T23:35:39.148+06:00  INFO 39180 --- [tokenrail-server] [           main] io.tokenrail.M6BusinessIT                : Started M6BusinessIT in 1.374 seconds (process running for 1.985)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/tanglijiong/.m2/repository/net/bytebuddy/byte-buddy-agent/1.18.11/byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-09-14T23:35:45.104+06:00  INFO 39180 --- [tokenrail-server] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-14T23:35:45.104+06:00  INFO 39180 --- [tokenrail-server] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-14T23:35:45.105+06:00  INFO 39180 --- [tokenrail-server] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 49.68 s -- in io.tokenrail.M6BusinessIT
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- failsafe:3.5.6:verify (default) @ tokenrail-server ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  53.452 s
+[INFO] Finished at: 2026-09-14T23:36:29+06:00
+[INFO] ------------------------------------------------------------------------
+completed=2026-09-14T17:36:29Z
+M7_CLEAN_RELEASE=PASS

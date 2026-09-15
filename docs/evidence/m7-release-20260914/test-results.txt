@@ -1,0 +1,12 @@
+M7_CLEAN_RELEASE=PASS
+release_candidate=cd78115f641a3d210756e490249bd0603d501c26
+solidity=51 passed, 0 failed
+m3_qbft=passed
+m4_m5=8 passed, 0 failed
+m51=8 passed, 0 failed
+m6=2 passed, 0 failed
+scenario_a=release PROJECTED; refund PROJECTED
+scenario_b=settled PROJECTED; insufficient balances unchanged
+scenario_c=frozen direct transfer status 0x0; retry PROJECTED
+browser_console=0 errors, 0 warnings
+video_sha256=71f3bd833d49d2f81a576e29f47654fdf10b4d49ff7fbab7262bd9308ff0935b

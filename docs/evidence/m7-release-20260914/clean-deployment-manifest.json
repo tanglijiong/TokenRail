@@ -1,0 +1,54 @@
+{
+  "deploymentId": "0x44e40b1a5670ff560f06eda7ac4a4e582f4f11676db97eb32880b02c31d20a05",
+  "chainId": 20260913,
+  "genesisHash": "0xfb9d67cdc1d63e7b4c8d742a37d76c2a7bb0ef6088d2a93fc46375c0e72233fd",
+  "deploymentBlock": 94,
+  "deployer": "0xb18d78c6ff6d674b65b431208099e141dcf7c5d7",
+  "tools": {
+    "besu": "26.8.1",
+    "solidity": "0.8.30",
+    "evm": "cancun"
+  },
+  "contracts": {
+    "IdentityRegistry": {
+      "name": "IdentityRegistry",
+      "address": "0x795b2E3103D5F8DF6877961F901670395dF128e7",
+      "transactionHash": "0xc36598aabb091832fc9360a90b2d0d353429f369224af7225253de6a4d5ce93b",
+      "blockNumber": 89,
+      "abiHash": "0xd3943e9ed63033c7b94061469ea82957fefeec4dcfeb466bde28d780da089110",
+      "bytecodeHash": "0xd353d473a433279125bdf0f542298f7fd210b3797d3b64b4ca5fac39b47cbf79"
+    },
+    "DepositToken": {
+      "name": "DepositToken",
+      "address": "0x1446f59FF8377D52A6948C7a96533a560a791973",
+      "transactionHash": "0x152f7a50011e3be9dbf1e409c5b691c18121d44f0f08b48e5e0dfc4352d49ee0",
+      "blockNumber": 90,
+      "abiHash": "0xfa6c00ff220f28bb79c5cfd2143e607f98e928d4653fd6a62992830e7982d7c8",
+      "bytecodeHash": "0xb127792f16ace8737aa872fc8fd7d506a7e035b89fcf3816c7023b70325a5614"
+    },
+    "BondToken": {
+      "name": "BondToken",
+      "address": "0xeC1d14b178dd4e167497E30bD787Ef4BC4a2c915",
+      "transactionHash": "0xc53a9d679c8d766402ec03f8c563fa32b641a0d361f3c3de48d5d5bb0d3dc8e0",
+      "blockNumber": 91,
+      "abiHash": "0x802bd4c1f2e8752de851584b788ef3114af38cabe2b6ed76c45eeaf991f31bd9",
+      "bytecodeHash": "0x658dc8fea8f2150efafd29114b8d453ad3ca334328190707126960a55143edd9"
+    },
+    "DvPSettlement": {
+      "name": "DvPSettlement",
+      "address": "0x173a3f8a79415151Fc81338A2B32748087020810",
+      "transactionHash": "0x354aa0285d7bab2f062b0a3984a564bf98b72fe744302c3f2818cd33e1b05f4f",
+      "blockNumber": 92,
+      "abiHash": "0xbf60f095e11ba4577d4a0d308e7cae4fe569c424d0e42d469bc0575b022423ed",
+      "bytecodeHash": "0x356072bd9ce292336f0390671d42d4c85d715b06e32ce8e192529103b7adec0c"
+    },
+    "PaymentEscrow": {
+      "name": "PaymentEscrow",
+      "address": "0x747f62bc4f473Ac6E2aCcc1F304E35cB68ba016A",
+      "transactionHash": "0x3eb6fb2b6b73196d4379462bdaf843fffbfa5dd8473457eea82326239d541ffd",
+      "blockNumber": 93,
+      "abiHash": "0xec59cddd17f5843dbd1e87d47294d91e6b6e94a85a14b444f5b1804767ca3e82",
+      "bytecodeHash": "0xfaeadc63610a7c207881e988d0e8625a74a9f040a7769e19d161a08b2601ba6f"
+    }
+  }
+}
